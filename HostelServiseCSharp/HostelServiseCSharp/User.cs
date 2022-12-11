@@ -1,8 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace HostelServiseCSharp
 {
+    /// <summary>
+    /// Class <c>User</c> represents user model
+    /// </summary>
     public class User
+       
     {
         public int Id { get; set; }
 
@@ -18,5 +23,29 @@ namespace HostelServiseCSharp
         public string? Surname { get; set; }
 
         public UserRole Role { get; set; }
+
+        public User(string login, string password, string email, string name, string surname, UserRole role)
+        {
+            Id = 0;
+            Login = login;
+            Password = password;
+            Email = email;
+            Name = name;
+            Surname = surname;
+            Role = role;
+        }
+        [JsonConstructor]
+        public User(int id, string login, string password, string email, string name, string surname, UserRole role)
+        {
+            Id = id;
+            Login = login;
+            Password = password;
+            Email = email;
+            Name = name;
+            Surname = surname;
+            Role = role;
+        }
     }
+
+
 }
